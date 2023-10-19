@@ -18,4 +18,10 @@ const float a1 = 2.3845e-12;    // a2
 const float kl = 1.684e-08;    //constante de sustentação
 const float kd = 1.1123e-10;   //constante de arrasto
 
+//estimador de atitude
+const float dt = 1.0/500.0;
+// const float fc = 10;
+const float wc = 10;
+const float alpha = wc*dt/(1.0+wc*dt);
+
 #endif
