@@ -16,6 +16,7 @@ AttitudeEstimator::AttitudeEstimator () : imu(IMU_SDA,IMU_SCL), led(LED_RED_L)
 }
 
 void AttitudeEstimator::init(){
+    wait(3);
     //inicia IMU
     imu.init();
     for(int i = 0; i<500; i++){
