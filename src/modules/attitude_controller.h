@@ -14,8 +14,13 @@ class AttitudeController
         float tau_phi, tau_theta, tau_psi;
     
     private:
-    
-        float control_siso (float angle_r, float angle, float rate);
-    
+        float zeta_pt;
+        float zeta_psi;
+        float wn_pt;
+        float wn_psi;
+
+        float control_siso (float angle_r, float angle, float rate, float kp, float kd);
+        float calcula_kp(float wn);
+        float calcula_kd(float zeta, float wn);
 };
 #endif

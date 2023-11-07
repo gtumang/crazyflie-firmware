@@ -20,6 +20,7 @@ class AttitudeEstimator
         //Pega estado
 
     private:
+        float sec(float angulo);
         float p_bias, q_bias, r_bias;
         DigitalOut led;
         //Objeto da classe de sensores

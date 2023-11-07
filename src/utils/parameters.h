@@ -24,11 +24,9 @@ const float wc = 1.0;
 const float alpha = wc*dt/(1.0+wc*dt);
 
 const float Up = 0.005;
-const float Ts = 0.3;
-const float zeta = abs(log(Up))/sqrt(pow(log(Up),2)+pow(pi, 2));
-const float wn = 4.0/(zeta* Ts);
-const float kd_control = 2.0* zeta* wn;
-const float kp = pow(wn, 2);
+const float Ts_pt = 0.3;
+const float Ts_psi = 0.5;
+
 
 
 
