@@ -22,11 +22,17 @@ const float dt = 1.0/500.0;
 // const float fc = 10;
 const float wc = 1.0;
 const float alpha = wc*dt/(1.0+wc*dt);
-
+//Controlador de atitude
 const float Up = 0.005;
 const float Ts_pt = 0.3;
 const float Ts_psi = 0.5;
 
+//Estimador vertical
+const float dt_range = 1.0/20.0;
+const float wc_ve = 10.0;
+const float zeta_ve = sqrt(2.0)/2;
+const float l1 = wc_ve*wc_ve;
+const float l2 = 2*wc_ve*zeta_ve;
 
 
 

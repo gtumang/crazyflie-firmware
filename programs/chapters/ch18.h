@@ -38,7 +38,7 @@ int main()
             flag = false;
 
             // Update estimators
-            att_est.predict();
+            att_est.estimate();
             ver_est.predict(0.0);
 
             if(flag_range)
@@ -48,7 +48,7 @@ int main()
 
                 // Update estimators
                 ver_est.correct(att_est.phi, att_est.theta);
-                serial.printf("z (m): %6.2f | w (m/s): %6.2f \n", ver_est.z, ver_est.w);
+                serial.printf("z_m(m): %6.2f | z (m): %6.2f | w (m/s): %6.2f \n",ver_est.z_m , ver_est.z, ver_est.w);
             }
         }
     }
