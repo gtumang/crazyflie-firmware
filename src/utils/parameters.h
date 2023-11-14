@@ -34,6 +34,20 @@ const float zeta_ve = sqrt(2.0)/2;
 const float l1 = wc_ve*wc_ve;
 const float l2 = 2*wc_ve*zeta_ve;
 
+//Controlador vertical
+const float kp_ver = 5.8567;
+const float kd_ver = 3.4225;
+
+//Propriedades do sensor de fluxo óptico
+const float gamma = 42*pi/180;
+const float W = 420;
+const float sigma = 2*tan(gamma/2)/(W*dt);
+
+//Estimador horizontal
+const float wc_hoz = 50;
+const float l3 = wc_hoz;
+
+
 
 
 #endif
