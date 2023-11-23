@@ -1,34 +1,15 @@
-#include "mbed.h"
 #include "crazyflie.h"
 
-HorizontalEstimator::HorizontalEstimator() : flow(PA_7, PA_6, PA_5, PB_4){
-    x = 0;
-    y = 0;
-    u = 0;
-    v = 0;
+HorizontalController::HorizontalController(){
+    phi_r = 0;
+    theta_r = 0;
 }
 
-void HorizontalEstimator::init(){
-    //inicia PMW3901
-    flow.init();
+void HorizontalController::control(float x_r, float y_r, float x, float y, float u, float v){
+    theta_r = 1/g * control_siso(x_r, x, u, kp_hor, kd_hor);
+    phi_r = -1/g * control_siso(y_r, y, v, kp_hor, kd_hor);
 }
 
-void HorizontalEstimator::predict(float phi, float theta){
-    x = x+u*dt;
-    y = y+v*dt;
-    u = u+g*theta*dt;
-    v = v+v*g*phi*dt;
-}
-
-void HorizontalEstimator::correct(float phi, float theta, float p, float q, float z){
-    float den = cos(phi)*cos(theta);
-    if(den>0.5){
-        float d = z/den;
-        flow.read();
-        float u_m = (sigma*flow.px+q)*d;
-        float v_m = (sigma*flow.py-p)*d;
-        u = u + l3*dt*(u_m-u);
-        v = v + l3*dt*(v_m-v);
-        
-    }
+float HorizontalController::control_siso(float pos_r, float pos, float vel, float kp, float kd){
+    return kp*(pos_r - pos) + kd*(0 - vel);
 }

@@ -9,13 +9,15 @@ VerticalController ver_cont;
 
 Ticker tic, tic_range;
 
+Timer t;
+
 bool flag, flag_range;
 
 void callback(){flag = true;};
 void callback_range(){flag_range = true;};
 
 int main(){
-    float z_r = 0.1;
+    float z_r = 0.3;
     float phi_r = 0.0;
     float theta_r = 0.0;
     float psi_r = 0.0;
@@ -27,7 +29,10 @@ int main(){
     tic_range.attach(&callback_range, dt_range);
 
     mixer.arm();
-    while(abs(att_est.phi)<= pi/4.0 && abs(att_est.theta) <= pi/4.0 && abs(att_est.p)<= 4.0*pi && abs(att_est.q)<=4.0*pi && abs(att_est.r) <=4.0*pi){
+
+    t.start();
+
+    while(abs(att_est.phi)<= pi/4.0 && abs(att_est.theta) <= pi/4.0 && abs(att_est.p)<= 4.0*pi && abs(att_est.q)<=4.0*pi && abs(att_est.r) <=4.0*pi && t.read_ms()<5*1000){
         if(flag){
             flag = false;
             att_est.estimate();

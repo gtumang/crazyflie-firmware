@@ -7,7 +7,7 @@
 
 
 // Crazyflie hardware abstraction layer
-#include "drivers/bmi088.h" // IMU sensor
+#include "drivers/mpu9250.h" // IMU sensor
 
 // Flow deck hardware abstraction layer
 #include "drivers/pmw3901.h" // Optical flow sensor
@@ -21,4 +21,5 @@
 #include "modules/vertical_estimator.h"
 #include "modules/vertical_controller.h"
 #include "modules/horizontal_estimator.h"
+#include "modules/horizontal_controller.h"
 #endif

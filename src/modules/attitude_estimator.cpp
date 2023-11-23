@@ -12,6 +12,8 @@ AttitudeEstimator::AttitudeEstimator () : imu(IMU_SDA,IMU_SCL), led(LED_RED_L)
     q = 0;
     r = 0;
     p_bias = 0;
+    q_bias = 0;
+    r_bias = 0;
     led.write(1);
 }
 
@@ -47,8 +49,8 @@ void AttitudeEstimator::estimate(){
     r = imu.gz - r_bias;
     float psi_g = psi + (sin(phi)*sec(theta)*q + cos(phi)*sec(theta)*r)*dt;
 
-    phi = (1-alpha)*phi_g+alpha*phi_a;
-    theta = (1-alpha)*theta_g+alpha*theta_a;
+    phi = (1.0-alpha)*phi_g+alpha*phi_a;
+    theta = (1.0-alpha)*theta_g+alpha*theta_a;
     psi = psi_g;
 }
 

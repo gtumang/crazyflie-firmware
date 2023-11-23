@@ -24,7 +24,7 @@ class AttitudeEstimator
         float p_bias, q_bias, r_bias;
         DigitalOut led;
         //Objeto da classe de sensores
-        BMI088 imu;
+        MPU9250 imu;
 };
 
 
