@@ -71,4 +71,11 @@ const float wn_hor = 4.0/(zeta_hor*Ts_hor);
 const float kp_hor = pow(wn_hor,2);
 const float kd_hor = 2.0*wn_hor*zeta_hor;
 
+//Controle de trajetória
+const int td = 2000;
+const int tv = 5000;
+const int tp = 2000;
+const float h = 0.5;
+const float d = 1.5;
+
 #endif
